@@ -23,7 +23,7 @@ describe('TesouroController', () => {
     }) 
     it('deveria retornar status code 204 para método DELETE', async () => {
         const tesouro = await Tesouro.create({nome: "TES1", taxa: 7.5, ir: false, pais: "Brasil", prefixado: true, vencimento: new Date()})
-        const response = await request.put('/tesouro/' + tesouro._id).set('token',TOKEN)
+        const response = await request.delete('/tesouro/' + tesouro._id).set('token',TOKEN)
         expect(response.status).toBe(204)
     })
 })
