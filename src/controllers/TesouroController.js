@@ -1,12 +1,12 @@
-const TOKEN = 123456
+const TOKEN = '123456'
 const Tesouro = require('../models/Tesouro')
 
 module.exports = {
     async create (req, res) {
         if(req.headers.token === TOKEN){
-            const {nome, ir, pais, preoupos, vencimento} = req.body
+            const {nome, ir, pais, prefixado, taxa, vencimento} = req.body
             try {
-              const tesouro =  await Tesouro.create({ nome, ir, pais, preoupos, vencimento});
+              const tesouro =  await Tesouro.create({ nome, ir, pais, prefixado, taxa, vencimento});
               return res.status(201).send(tesouro)
             } catch (error) {
               return res.status(401).send(error)
